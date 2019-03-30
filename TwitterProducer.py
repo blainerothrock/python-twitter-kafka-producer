@@ -17,10 +17,10 @@ class TwitterProducer(threading.Thread):
         self.t = TwitterClient()
 
         self.producer = KafkaProducer(
-            bootstrap_servers='localhost.charlesproxy.com:9092',
+            bootstrap_servers=os.getenv("KAFKA_BROKER", "127.0.0.1:9092"),
             value_serializer=lambda v: json.dumps(v).encode('utf-8'),
             key_serializer=str.encode,
-            acks='all',
+            acks="all",
             retries=sys.maxint,
             
         )

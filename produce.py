@@ -2,8 +2,6 @@ import logging, sys, time
 from TwitterProducer import *
 
 def main(topic, tracks):
-    print topic
-    print tracks
     producer = TwitterProducer(topic, tracks)
     producer.daemon = True
     producer.start()
