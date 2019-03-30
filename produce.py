@@ -1,12 +1,14 @@
-import time
+import logging, sys, time
 from TwitterProducer import *
 
-def main():
-    producer = TwitterProducer("twitter-topic1", ["iOS", "Swift", "UIKit"])
+def main(topic, tracks):
+    print topic
+    print tracks
+    producer = TwitterProducer(topic, tracks)
     producer.daemon = True
     producer.start()
     while True:
         time.sleep(1)
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1], sys.argv[2:])
